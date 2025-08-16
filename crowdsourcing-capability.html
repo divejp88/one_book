@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>众包能力 - 一人企业方法论</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">一人企业方法论</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="众包能力"><a class="header" href="#众包能力">众包能力</a></h1>
+<p>最后还有一个基于产品池和用户池之上的、非常重要的能力 ------ 众包能力。</p>
+<h2 id="为什么需要众包"><a class="header" href="#为什么需要众包">为什么需要众包</a></h2>
+<p>对于一人企业来说，这个能力至关重要，因为我们需要严格控制人数。这是由于我们的商业模式和竞争策略都是按照这个设计的。</p>
+<p>我们在很多策略中都提到，由于人数较少，我们可以专注于非常垂直的小市场。即使获得的利润相对于大公司来说较少，但因为人数少，所以人均高，这就成了我们商业模式和竞争策略的基础。如果我们有很多人，那么这种优势就不存在了。</p>
+<p>我们现在可以通过AI和自动化处理很多事情，但总有一些问题是它们无法解决的，需要由人来解决。这就形成了一个基本矛盾。虽然在我们起步的阶段这个矛盾不会太明显，但随着业务量增加，它会日益明显。</p>
+<p>为了解决这个矛盾，我们需要拥有众包的能力。简单来说，众包就是将任务分包给很多人，通常是我们产品的用户。在这种方式下，我们不需要雇佣员工，所以员工数量不会增加，可以很好地满足我们一人企业在规模上面的要求。</p>
+<p><img src="images/image-36-1024x468.png" alt="" /></p>
+<p>众包能力在基础设施中的位置和重要性</p>
+<h2 id="众包能力的构成要件"><a class="header" href="#众包能力的构成要件">众包能力的构成要件</a></h2>
+<p>这个方案听起来很理想，但实际操作中有很多需要注意的细节。</p>
+<p>首先，并不是所有的任务都可以众包，它们需要非常明确，而我们分包给的任务执行者需要具备相应的能力、时间和意愿。所以总体来讲，我们需要处理掉所有自己、自动化和AI能处理的事情，最后将处理不了的部分拿出来进行众包。</p>
+<p><img src="images/image-37-1024x491.png" alt="" /></p>
+<p>众包系统的构成要件</p>
+<p>众包系统的构成要件包括几个方面。</p>
+<h3 id="清晰的细分任务"><a class="header" href="#清晰的细分任务">清晰的细分任务</a></h3>
+<p>首先，要有一个清晰的细分任务。不能将一整块任务扔出去，这样完不成的风险很高，沟通成本也高。需要多人紧密合作的任务也不适合直接众包。我们需要将任务分得特别细，无需沟通就可以直接执行。</p>
+<p>例如，如果我们要翻译我们的整个网站，我们可以将要翻译的内容全部拆成单句，然后发给我们的用户。每一个用户只需要翻译这一句，然后提交。我们会对比两到三个人的翻译结果，然后从中选择一个较好的。而选择结果的任务又可以作为一个独立任务，再次通过众包系统分发下去。采用类似于这样的逐步分拆的方式，使每一个细分任务都足够明确。</p>
+<p>另外，单人的工作量应该足够小。因为众包与外包不同，众包是任务执行人在业余时间来做这个事情，所以他的时间和精力都是非常不可控和不可知的。我们需要将承担的工作量变得足够小，然后执行任务的人足够多，这样我们才可以更好地进行控制质量和风险。</p>
+<h3 id="明确的验收条件"><a class="header" href="#明确的验收条件">明确的验收条件</a></h3>
+<p>第二，是一个明确的验收条件。其核心是量化，即这个任务是否完成，完成的好不好，要有一个量化的标准。最好可以自动验收。</p>
+<p>自动验收的最大优点在于，一旦验收完成，我们就可以实时发送奖励。这样对任务执行人的激励效果会放大，不但会刺激他继续来做众包任务，甚至还会推动他邀请自己的朋友来参与。</p>
+<h3 id="有吸引力的奖励"><a class="header" href="#有吸引力的奖励">有吸引力的奖励</a></h3>
+<p>最后，有吸引力的奖励也非常重要。</p>
+<p>现在各个APP里面的邀请任务已经非常多了，套路已经被用烂了，产生「吸引力」就很难。</p>
+<p>我们发现依然有吸引力的奖励首先是现金或等价物，比如说京东购物卡；然后是与业务相关的一些有价无市的物品，比如说像我们设计的 NodeJS 实体包，这个现在已经买不到了。如果把它作为奖品的话，我觉得还是对我们的目标人群是很有吸引力的。总的来说，在奖励上，要多一点真诚，少一点套路。</p>
+<p>发放时机刚才已经说过了，最理想的方式是实时发放，因为它可以在任务执行过程中就把激励循环转起来，最后获得的效果会好很多。</p>
+<h2 id="众包系统"><a class="header" href="#众包系统">众包系统</a></h2>
+<p>那么，要完成众包，我们需要什么样的支持系统？</p>
+<p>这取决于我们是否要自动判定验收条件，因为不同的任务的验收条件是完全不同的。</p>
+<p>如果要自动判定，我们就需要各种垂直细分的专用系统。比如，像裂变和推荐返现就是非常典型的垂直众包。这个场景被单独拿出来优化运行，甚至现在大家都不觉得它算众包了。</p>
+<p>但它本质上就是一种众包。我们可以回过头来看它的这几个要件：</p>
+<ol>
+<li>首先，它有一个清晰细分的任务。给你一个链接，你通过这个链接邀请用户来。</li>
+<li>然后，它的验收条件也非常明确，用户带着邀请码注册，系统直接就能识别到。</li>
+<li>最后奖励也是实时的发放的，一旦发现任务完成以后，立刻发送奖励，很多系统微信上立马就可以收到现金。</li>
+</ol>
+<p>所以，众包不一定是一个独立系统，它也可以是一个垂直的功能。</p>
+<p>如果接受人工验收，那么我们可以有一些更通用的方案。</p>
+<p>比如论坛加积分商城。网龄稍微大一点的同学可能用过，基本流程就是，你可以在论坛发布任务，然后把积分悬赏放上去，然后其他人完成任务以后，你去结帖，然后积分就会转让给他。同时论坛本身提供一个积分商城来做奖励的兑换。当然，现在论坛的这个产品形态已经用得非常少了，但是类似的机制依然运行得很好。</p>
+<p>如果你使用WordPress，它有一些现成的商业的威客插件。安装以后，可以为 WordPress 添加类似的任务发布、领取、验收、积分/现金结算的功能。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="product-pool-and-payment-capability.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="setup-a-one-person-business-infrastructure.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="product-pool-and-payment-capability.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="setup-a-one-person-business-infrastructure.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

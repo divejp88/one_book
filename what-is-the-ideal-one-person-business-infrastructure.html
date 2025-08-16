@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>理想的一人企业基础设施 - 一人企业方法论</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">一人企业方法论</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="理想的一人企业基础设施"><a class="header" href="#理想的一人企业基础设施">理想的一人企业基础设施</a></h1>
+<p>在了解方法论后，我们通常希望开始实践。但从这里开始，难度就会骤增，尤其是对一些没有技术基础的同学来说，会感到无从下手。</p>
+<p>这是因为我们缺乏一些基础设施，而这些基础设施是使用互联网的企业所必需的，它们用于处理各种业务的通用场景。对于一些线下业务基础设施可能不一样，但一人线下业务往往难以规模化，所以我们这里只讨论以网络和数字经济为核心的一人企业基础设施。</p>
+<p>为了将我们的想法和业务落地，让用户能够使用，我们需要构建一些基础设施。基础设施并不一定要自己构建，也可以直接使用现成的平台。例如，微信公众号就是一个很成熟的、用于付费阅读或广告商业模式的基础设施。</p>
+<h2 id="为什么要构建自己的基础设施"><a class="header" href="#为什么要构建自己的基础设施">为什么要构建自己的基础设施</a></h2>
+<p>那么在有成熟平台的前提下，为什么我们还要构建自己的基础设施呢？首先要明确一点，并不是说平台的基础设施不能用，而是说在使用平台基础设施的同时，需要拥有一套完全自己可控的基础设施，并且实现用户的无缝连接。将单选变成多选。</p>
+<h3 id="商业模式"><a class="header" href="#商业模式">商业模式</a></h3>
+<p>平台的核心商业模式是汇聚用户，从中获利。所以它对不同类型的用户以及在平台不同生命周期的策略是不一样的，这些策略可能并不适合我们的特定阶段。</p>
+<p>例如，在一些平台上，如果某个账号影响力特别大，平台可能会削弱这种账号的能力。而对于一些特别小的账号，如果看不到增长趋势，就不会分配流量，甚至会限制你自己引来的流量。</p>
+<p>另一方面，在平台早期，平台可能会扶持一些方向的账号，这时你会拿到较多的流量，但这些流量是从其他用户那里转移过来的。</p>
+<p>如果没有自己的基础设施，就只能任由平台操控。但如果有自己的基础设施，当平台策略不匹配时，可以引导用户到自己的平台上消费内容、购买产品。</p>
+<h3 id="封号风险"><a class="header" href="#封号风险">封号风险</a></h3>
+<p>平台有自己的红线和潜规则，甚至会出现一些失误。如果不小心碰到这些问题，可能会导致封号。对于个人用户，这可能没什么问题，但对于经营者，可能会导致数年构建的业务前功尽弃，所有努力化为乌有。</p>
+<p><img src="images/image-10.png" alt="" /></p>
+<h3 id="产品形态和品牌"><a class="header" href="#产品形态和品牌">产品形态和品牌</a></h3>
+<p>使用平台的基础设施还可能导致产品形态过于雷同。如果产品形态比较保守，可能没有问题，但如果在产品形态上进行创新，平台基础设施的约束就会非常大。</p>
+<p>例如，我们原来的视频课程放在网易云课堂上销售，但当我们想为学员提供实际操作的沙箱环境时，平台并不支持。即使我们自己开发沙箱，要与网易云课堂的用户对接时，发现该平台不提供接口。</p>
+<p>为了防止讲师从平台导流，一些平台甚至在课件中不允许出现独立域名。这种规则在平台中后期会特别严格。</p>
+<h3 id="混合生态"><a class="header" href="#混合生态">混合生态</a></h3>
+<p>我们认为的最佳实践是首先拥有一个完全可控的基础设施，然后充分利用各个平台的资源和流量，分发内容到其他平台，并将用户回流至自有基础设施，形成一个混合生态。</p>
+<h2 id="为什么要自己构建基础设施"><a class="header" href="#为什么要自己构建基础设施">为什么要自己构建基础设施</a></h2>
+<p>市面上有很多构建基础设施的软件或SaaS服务，但当我们尝试使用时，会发现它们多多少少存在一些问题。</p>
+<h3 id="价格高"><a class="header" href="#价格高">价格高</a></h3>
+<p>价格高是一个典型问题，因为绝大部分的SaaS是面向企业的。</p>
+<p><img src="images/image-13-1024x759.png" alt="" /></p>
+<p>典型SaaS服务的定价</p>
+<p>对企业来说可能便宜的价格，但对个人来说就很贵。在一人企业的早期，我们还没有赚钱，也没有风险投资，所以资源有限。一年上万的投入对没有收入的个人来说，还是太高了。</p>
+<h3 id="不对个人开放"><a class="header" href="#不对个人开放">不对个人开放</a></h3>
+<p>另一个问题是很多基础设施不对个人开放，比如支付。</p>
+<p><img src="images/image-12-1024x534.png" alt="" /></p>
+<p>微信支付申请材料要求</p>
+<p>一些对个人开放的支付服务，又没有与这些现成的基础设施整合起来。这导致很多现成的基础设施不能直接用。</p>
+<h3 id="saas而非自架"><a class="header" href="#saas而非自架">SaaS而非自架</a></h3>
+<p>一个潜在风险是如果我们不能自行建设基础设施，而是使用服务商架设的在线版本，会有两种潜在风险。一是企业突然倒闭，即使退钱，但我们的业务就突然崩溃，没有补救方案。</p>
+<p><img src="images/image-14.png" alt="" /></p>
+<p>invision倒闭</p>
+<p>另一个风险是企业突然涨价，因为业务已经在平台上，短时间内迁不出去，所以当服务商涨价时，议价能力很弱。如果我们赚到了很多钱，分润给服务商也无所谓，但对一人企业来说，如果费用过高，整体可能没有收益，甚至亏损。</p>
+<p><img src="images/image-15.png" alt="" /></p>
+<p>企业微信突然对外部联系人收费</p>
+<h2 id="理想的一人企业基础设施-1"><a class="header" href="#理想的一人企业基础设施-1">理想的一人企业基础设施</a></h2>
+<p>可见，现有的用来搭建基础设施的服务多多少少存在一些问题。那么，理想的一人企业基础设施应该是什么样子的呢？</p>
+<h3 id="足够便宜"><a class="header" href="#足够便宜">足够便宜</a></h3>
+<p>首先，它应该足够便宜，至少在用户量很少的情况下应该非常便宜。这样我们才能在没有赚钱的情况下持续运营。</p>
+<p>可以自行架设的开源软件是一个非常好的选择，因为当用户量小的时候，对服务器资源的要求很低，只需租一个最低性能的虚拟机实例即可运营。</p>
+<p>提供自架方案的在线SaaS是一个更省事的选择，因为你可以随时迁移到自架方案，没有lock-in的风险。</p>
+<h3 id="足够可控"><a class="header" href="#足够可控">足够可控</a></h3>
+<p>另一方面，基础设施需要足够可控，不会因为别人的决定导致业务中断。虽然可能会受一些影响，但不能因为影响导致整个业务崩溃。</p>
+<p>比如说，平台限流或封号，至少可以通过其他方法触达已有用户。服务商疯狂涨价时，至少可以将数据迁移出来，在自己的环境中快速搭建，让用户继续使用，不至于流失到竞争对手那里。</p>
+<h3 id="个人可用"><a class="header" href="#个人可用">个人可用</a></h3>
+<p>我们希望这个基础设施可以以个人资质来运营。</p>
+<p>因为注册公司的成本很高，虽然工商注册已经足够便宜，甚至有些城市连公章都是赠送的，但真正的费用在于每个月的记账。如果没有合适的场地，还需要租用场地，这两项加起来一年就需要几千甚至上万。</p>
+<p>所以我们希望这个基础设施有一个完整的针对个人用户的解决方案，包括用户注册、登录、支付和消息推送等功能都可以个人资质使用。</p>
+<h3 id="足够开放"><a class="header" href="#足够开放">足够开放</a></h3>
+<p>如果我们想在产品和商业模式上进行创新，必然会对常规流程、界面和功能进行修改。所以我们的基础设施需要足够开放，允许我们方便地进行二次开发。</p>
+<p>另一方面，这个基础设施最好足够流行，这样才能容易找到二次开发工程师。不然就像现在的银行，全球有43%的银行依赖于COBOL程序，但已经很难找到对应的工程师来维护。</p>
+<h3 id="繁荣生态"><a class="header" href="#繁荣生态">繁荣生态</a></h3>
+<p>即使能找到工程师进行开发，开发过程总是需要时间，而且由于需求和工程师理解问题，会经历很长时间的迭代才能出现相对成熟的产品。</p>
+<p>如果使用的基础设施有繁荣的生态，很多功能可能已经被开发出来，并以免费或付费的方式发布为插件，我们可以直接使用。</p>
+<p>即使插件有一些细节不符合需求，改动起来也会很快，成本会大大降低。</p>
+<h3 id="适配于方法论"><a class="header" href="#适配于方法论">适配于方法论</a></h3>
+<p>当然，最重要的一点是，我们希望这个基础设施可以很好地适配「一人企业方法论」、为我们这套可能是唯一的针对一人企业的方法论提供全程支撑，让使用这套方法论的用户可以开箱即用，不要再花更多时间在测试和开发基础功能上。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter-build-infrastructure.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="infrastructure-user-pool-reach-capability.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter-build-infrastructure.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="infrastructure-user-pool-reach-capability.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

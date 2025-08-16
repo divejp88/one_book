@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>赛道选择:一人企业如何选择赛道 - 一人企业方法论</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">一人企业方法论</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="赛道选择一人企业如何选择赛道"><a class="header" href="#赛道选择一人企业如何选择赛道">赛道选择:一人企业如何选择赛道</a></h1>
+<p>现在我们来讨论「规划一人企业」的第二部分，赛道选择。</p>
+<h2 id="远离大众刚需"><a class="header" href="#远离大众刚需">远离大众刚需</a></h2>
+<p>首先要和大家分享的，是一个有点反常识的观点 ------ 远离大众刚需。这和我们通常接触的方法论有点不同。无论是大公司还是创业公司，在产品规划时都会强调必须满足大众的刚性需求，因为只有这样才能覆盖足够大的市场，从而获得相应的回报。</p>
+<p>这种选择对于大公司和创业公司而言，可能是理所当然的，因为大公司具有人力和资本的双重杠杆，而创业公司则依靠资本杠杆。然而，对于一人企业来说，如果按照同样的逻辑去选择赛道，那么毫无疑问会直接与大公司和创业公司撞上，产生直接的竞争，这显然不是我们所希望的。</p>
+<p><img src="images/image-49-1024x820.png" alt="" /></p>
+<p>大众刚需：拥挤又易被碾压的赛道</p>
+<p>对一人企业而言，至少在初期，直奔大众刚需并非上策。因为这意味着我们将直接面对那些拥有人力和资本杠杆的强大竞争者。并不是说我们完全无法取胜，但没有必要无谓地增加比赛的难度。</p>
+<h3 id="大众的弱需求小众的强需求"><a class="header" href="#大众的弱需求小众的强需求">大众的弱需求、小众的强需求</a></h3>
+<p>相反，我们可以选择从那些对大众来说是弱需求、但对某些小众人群却是强需求的地方入手。我把这个叫做「小众刚需」。</p>
+<p>以营养配餐为例，对于大众来说，这可能是一个弱需求，因为偶尔的营养不足和过剩并不是他们最关心的；大多数人更注重食物的口味。然而，对于母婴群体来说，营养就是他们的第一关注点、是刚性需求，远比口味更重要。</p>
+<p><img src="images/image-50-1024x543.png" alt="" /></p>
+<p>大众的弱需求，可能是小众的强需求</p>
+<p>通过这样的策略，我们可以在大众的弱需求中找到一部分实际上是刚需的细分市场，这正是一人企业应该着重关注的。如果你发现这个细分市场依然充满竞争，那么可以进一步细分下去。一人企业的优势就是，即使这个市场非常小，但往往对一人企业来说也足够。</p>
+<p><img src="images/image-51-1024x376.png" alt="" /></p>
+<p>一人企业可以选择更为小众的市场</p>
+<h3 id="小众人群的获客和触达"><a class="header" href="#小众人群的获客和触达">小众人群的获客和触达</a></h3>
+<p>然而，尽管我们可能发现各种小众刚需，是否适合我们却取决于能否以低成本的方式聚集或触达这个细分人群。</p>
+<p>因为小众市场的一大问题就是，通用的获客方式性价比极低。比如，同样是花几百万买开屏广告，面向大众的快消类产品，100 万人看，其中有 80 万都是潜在目标用户，最后点击可能是 20 万。但小众产品如果以同样价格去投放，100 万人中很可能只有 10 万人是目标用户，最终的点击和转化就非常低了。</p>
+<p>一些小众人群有自己的垂直渠道，比如论坛。但这种渠道的问题在于用户上限很低，往往投放不了几次用户就覆盖完了。很多垂直社区对广告还有天然的排斥情绪。另一方面，小渠道品质的参差不齐，也让投放难度变大。</p>
+<p>当然，以上讨论的是还是有市场费用的情况。更普遍的情况是，根本就没有市场预算。这时候我们就需要自己来做小众人群的聚集工作。常见的方式有以下几种：</p>
+<ul>
+<li>内容营销：通过写文章、发视频，以自媒体方式聚集用户</li>
+<li>SEO：通过特定关键字群，依靠搜索引擎获得用户</li>
+<li>SideProject营销：针对小众人群的特殊需求开发一个专门用于获客和传播的（免费）项目</li>
+</ul>
+<p>前两个大家应该很熟悉了，这里不多讲。说下SideProject营销。内容营销因为门槛低、易于复制，对小众市场来讲往往不是稀缺的，但SideProject的门槛就要高一点，同时给用户提供的价值也更为独特，因此更容易获客和传播。继续用上边母婴人群的例子，在通过浏览论坛、用户访谈之后，我们可以做一个有需求但未被满足的SideProject，比如母乳喂养管理APP（随机例子，不一定有需求）来获客。</p>
+<p>可以看到，能否以低成本接触和集中细分市场主要取决于个人的资源和能力，而且往往是一个长期的过程。</p>
+<p>因此，我们建议尽可能选择自己的「专长领域」。如果你对某个领域充满热情，即使面对收益不高甚至为零的情况也能持续投入，这就是所谓的专长领域。</p>
+<h2 id="适合一人企业的赛道"><a class="header" href="#适合一人企业的赛道">适合一人企业的赛道</a></h2>
+<p>我们统计了Trends.vc的<a href="https://trends.vc/archive/">上百份历史报告</a>，总结出以下适合一人企业的赛道/趋势，希望对大家有所启发：</p>
+<h3 id="数字产品与服务"><a class="header" href="#数字产品与服务">数字产品与服务</a></h3>
+<ul>
+<li>软件即服务 (SaaS): SaaS模板、AI驱动的SaaS、WordPress插件、Shopify插件、Chrome扩展、面向企业的SaaS、微型SaaS。</li>
+<li>数字内容创作: YouTube频道、不出镜YouTube频道、短视频、播客、AI图像生成器、AI生成内容。</li>
+<li>教育与学习: 微教育(比如基于短信)业务、在线课程、基于群组（用户分组）的课程。</li>
+</ul>
+<h3 id="营销与增长"><a class="header" href="#营销与增长">营销与增长</a></h3>
+<ul>
+<li>内容营销: 不出镜社交媒体账户、每日Newsletter、付费Newsletter、SideProject营销。</li>
+<li>社区与网络: 付费社区、基于Token的社区。</li>
+<li>增长策略: 增长黑客、分类导航服务、众包、营销漏斗、以产品为导向的增长。</li>
+</ul>
+<h3 id="创业与金融模式"><a class="header" href="#创业与金融模式">创业与金融模式</a></h3>
+<ul>
+<li>个体创业: 通过高杠杆技能、个人品牌、微垄断（独立品类）、多元化收入、信任货币化构建百万美元的一人企业。</li>
+<li>微型企业与投资: 微型私募股权、天使投资。</li>
+<li>货币化模式: 去中心化自治组织 (DAOs)、非同质化代币 (NFTs)、去中心化金融 (DeFi)。</li>
+</ul>
+<h3 id="技术与创新"><a class="header" href="#技术与创新">技术与创新</a></h3>
+<ul>
+<li>人工智能与机器学习: 细分AI模型、开源AI、AI生成音乐、AI代理、提示词工程、声音克隆。</li>
+<li>无代码/低代码开发: 无代码、低代码。</li>
+<li>区块链与数字货币: 流动性挖矿、非同质化代币 (NFTs)、去中心化金融 (DeFi)。</li>
+</ul>
+<h3 id="个性化与定制服务"><a class="header" href="#个性化与定制服务">个性化与定制服务</a></h3>
+<ul>
+<li>专业服务与咨询: 包括代理机构、软件开发服务、咨询、微咨询。</li>
+<li>定制化产品与服务: 包括无限服务、移动应用、电子书、独立游戏。</li>
+</ul>
+<p>注：由于政策限制，数字货币相关业务在中国大陆是被禁止的。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="snowballing-and-chain-propagation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="non-competition-strategy.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="snowballing-and-chain-propagation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="non-competition-strategy.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
